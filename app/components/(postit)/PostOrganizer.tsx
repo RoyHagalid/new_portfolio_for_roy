@@ -22,7 +22,7 @@ const PostOrganizer = ({ index, siteData, isDeleting }: Props) => {
     if (siteData.quotes) {
       setLabel(siteData.quotes[Math.floor(Math.random() * siteData.quotes.length) + 0]);
     }
-  }, []);
+  }, [siteData.quotes]);
 
   if (!siteData) {
     return <Loading />

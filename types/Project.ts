@@ -10,4 +10,5 @@ export type Project = {
     content: ContentBlock[];
     progress: string;
     tags: string[];
+    highlighted?: boolean;
 }

@@ -26,7 +26,8 @@ export async function getProjects(): Promise<Project[]> {
         },
         excerpt,
         progress,
-        tags
+        tags,
+        highlighted
         }`,
         {},
         {

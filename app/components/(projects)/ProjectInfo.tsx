@@ -16,7 +16,7 @@ const useKeyDown = (handler: (event: KeyboardEvent) => void, deps: React.Depende
     return () => {
       document.removeEventListener("keydown", listener);
     };
-  }, deps)
+  }, Array.isArray(deps) ? deps : [])
 }
 
 const ProjectInfo = ({ project, setToggleDisplay }: Props) => {
@@ -67,12 +67,29 @@ const ProjectInfo = ({ project, setToggleDisplay }: Props) => {
   const circleIndex = getCircleIndex(projectIndex);
 
   return (
-    <div className="fixed inset-0 z-[10000] flex flex-col w-screen h-screen items-center justify-center">
+    <div className="fixed inset-0 z-[10000] flex items-center justify-center w-screen h-screen">
+      {/* Overlay as background layer */}
       <div
-        className="w-screen h-screen bg-[#D9D9D92B] backdrop-blur-sm absolute z-[9999]"
+        className="fixed inset-0 w-screen h-screen bg-black/40 backdrop-blur-sm z-[10000]"
+        style={{ pointerEvents: 'auto' }}
         onClick={() => setToggleDisplay(false)}
       ></div>
-      <ProjectInfoCard setToggleDisplay={setToggleDisplay} goTothisIndex={goTothisIndex} nextProject={nextProject} circleIndex={circleIndex} project={project} goback={goback} projectIndex={projectIndex}/>
+      {/* Modal window centered, only content size */}
+      <div
+        className="relative z-[10001] flex items-center justify-center w-auto max-w-[95vw] md:max-w-[70vw]"
+        onClick={e => e.stopPropagation()}
+        style={{ pointerEvents: 'auto' }}
+      >
+        <ProjectInfoCard
+          setToggleDisplay={setToggleDisplay}
+          goTothisIndex={goTothisIndex}
+          nextProject={nextProject}
+          circleIndex={circleIndex}
+          project={project}
+          goback={goback}
+          projectIndex={projectIndex}
+        />
+      </div>
     </div>
   );
 };

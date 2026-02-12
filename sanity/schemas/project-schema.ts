@@ -54,6 +54,12 @@ const project = {
             type: 'array',
             of: [{ type: "string"}]
         },
+        {
+            name: 'highlighted',
+            title: 'Highlighted Project',
+            type: 'boolean',
+            description: 'Mark this project as a highlighted/featured project',
+        },
     ]
 }
 

@@ -67,9 +67,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${libreBaskerville.variable} ${rubik.variable} ${workSans.variable} ${spaceMono.variable} ${permanentMarker.variable} antialiased md:p-6 pt-8 md:pt-0 relative `}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} ${libreBaskerville.variable} ${rubik.variable} ${workSans.variable} ${spaceMono.variable} ${permanentMarker.variable} antialiased md:p-6 pt-8 md:pt-0 relative`}>
         <div className="z-[1] min-w-full " id="top">
           <Header />
           <Navbar />
