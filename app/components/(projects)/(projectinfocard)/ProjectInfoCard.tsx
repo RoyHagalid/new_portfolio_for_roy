@@ -2,6 +2,18 @@ import React from "react";
 import ProjectNavigation from "../(project pagination)/ProjectNavigation";
 import { Project } from "@/types/Project";
 import { PortableText } from "@portabletext/react";
+
+const portableTextComponents = {
+  marks: {
+    strong: ({ children }) => <strong>{children}</strong>,
+    em: ({ children }) => <em>{children}</em>,
+    link: ({ value, children }) => (
+      <a href={value?.href || value} target="_blank" rel="noopener noreferrer">
+        {children}
+      </a>
+    ),
+  },
+};
 import ProjectImageContainer from "./ProjectImageContainer";
 import ProjectImageContainerMobile from "./ProjectImageContainerMobile";
 import ExitButton from "./ExitButton";
@@ -70,6 +82,7 @@ const ProjectInfoCard = ({
                     <>
                       <PortableText
                         value={project.content[projectIndex].content}
+                        components={portableTextComponents}
                       />
                       {project.content[projectIndex].url ? (
                         <a
