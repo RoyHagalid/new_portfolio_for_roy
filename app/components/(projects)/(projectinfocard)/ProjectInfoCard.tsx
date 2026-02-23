@@ -3,12 +3,14 @@ import ProjectNavigation from "../(project pagination)/ProjectNavigation";
 import { Project } from "@/types/Project";
 import { PortableText } from "@portabletext/react";
 
+import { PortableTextMarkComponentProps } from "@portabletext/react";
+
 const portableTextComponents = {
   marks: {
-    strong: ({ children }) => <strong>{children}</strong>,
-    em: ({ children }) => <em>{children}</em>,
-    link: ({ value, children }) => (
-      <a href={value?.href || value} target="_blank" rel="noopener noreferrer">
+    strong: ({ children }: PortableTextMarkComponentProps) => <strong>{children}</strong>,
+    em: ({ children }: PortableTextMarkComponentProps) => <em>{children}</em>,
+    link: ({ value, children }: PortableTextMarkComponentProps) => (
+      <a href={typeof value === 'object' && value?.href ? value.href : value} target="_blank" rel="noopener noreferrer">
         {children}
       </a>
     ),
