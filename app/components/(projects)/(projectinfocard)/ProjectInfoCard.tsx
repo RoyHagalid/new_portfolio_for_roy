@@ -15,6 +15,9 @@ const portableTextComponents = {
       </a>
     ),
   },
+  block: {
+    normal: ({ children }: any) => <p className="mb-4 whitespace-pre-line">{children}</p>,
+  },
 };
 import ProjectImageContainer from "./ProjectImageContainer";
 import ProjectImageContainerMobile from "./ProjectImageContainerMobile";
@@ -46,60 +49,106 @@ const ProjectInfoCard = ({
       </div>
       {/* Main content row: image (left) and text (right) */}
       <div className="flex flex-1 items-stretch w-full h-auto max-h-full">
-        {/* Image section (desktop) */}
-        <div className="hidden md:flex flex-none h-full items-center justify-center w-[50%] max-h-full">
-          <ProjectImageContainer
-            project={project}
-            projectIndex={projectIndex}
-          />
-        </div>
-        {/* Text/content section */}
-        <div className="flex items-center py-4 md:items-center justify-center h-auto max-h-full overflow-y-auto flex-col w-full md:w-[50%] justify-center">
-          <h2 className=" font-rubik text-4xl w-[80%]">
-            {project.content[projectIndex].slidetitle
-              ? project.content[projectIndex].slidetitle
-              : null}
-          </h2>
-          <div className="md:hidden w-[90%] flex items-center justify-center">
-            <ProjectImageContainerMobile
-              project={project}
-              projectIndex={projectIndex}
-            />
-          </div>
-          <div className="flex flex-col items-center justify-center w-[90%] ">
-            <div className="w-full flex  md:hidden items-center justify-center">
-              <ProjectNavigation
+        {project.content[projectIndex]?.image ? (
+          <>
+            {/* Image section (desktop) */}
+            <div className="hidden md:flex flex-none h-full items-center justify-center w-[50%] max-h-full">
+              <ProjectImageContainer
                 project={project}
-                nextProject={nextProject}
-                goTothisIndex={goTothisIndex}
-                goback={goback}
-                projectIndex={circleIndex}
+                projectIndex={projectIndex}
               />
             </div>
-            {project.content?.length && (
-              <div className="md:mt-8 w-full text-sm md:text-2xl paragraph font-work-sans text-stone-800/90">
-                {project.content &&
-                  project.content.length > 0 &&
-                  project.content[projectIndex]?.content && (
-                    <>
-                      <PortableText
-                        value={project.content[projectIndex].content}
-                        components={portableTextComponents}
-                      />
-                      {project.content[projectIndex].url ? (
-                        <a
-                          href={project.content[projectIndex].url}
-                          className="font-space-mono underline italic font-rubik "
-                        >
-                          {project.content[projectIndex].urllabel}
-                        </a>
-                      ) : null}
-                    </>
-                  )}
+            {/* Text/content section */}
+            <div className="flex items-start py-4 md:items-start justify-center h-auto max-h-full overflow-y-auto flex-col w-full md:w-[50%] justify-center">
+              <h2 className="font-rubik text-4xl w-[80%] text-left">
+                {project.content[projectIndex].slidetitle
+                  ? project.content[projectIndex].slidetitle
+                  : null}
+              </h2>
+              <div className="md:hidden w-[90%] flex items-center justify-center">
+                <ProjectImageContainerMobile
+                  project={project}
+                  projectIndex={projectIndex}
+                />
               </div>
-            )}
+              <div className="flex flex-col items-center justify-center w-[90%] ">
+                <div className="w-full flex  md:hidden items-center justify-center">
+                  <ProjectNavigation
+                    project={project}
+                    nextProject={nextProject}
+                    goTothisIndex={goTothisIndex}
+                    goback={goback}
+                    projectIndex={circleIndex}
+                  />
+                </div>
+                {project.content?.length && (
+                  <div className="md:mt-8 w-full text-sm md:text-2xl paragraph font-work-sans text-stone-800/90">
+                    {project.content &&
+                      project.content.length > 0 &&
+                      project.content[projectIndex]?.content && (
+                        <>
+                          <PortableText
+                            value={project.content[projectIndex].content}
+                            components={portableTextComponents}
+                          />
+                          {project.content[projectIndex].url ? (
+                            <a
+                              href={project.content[projectIndex].url}
+                              className="font-space-mono underline italic font-rubik "
+                            >
+                              {project.content[projectIndex].urllabel}
+                            </a>
+                          ) : null}
+                        </>
+                      )}
+                  </div>
+                )}
+              </div>
+            </div>
+          </>
+        ) : (
+          // No image: center text section and make it full width
+          <div className="flex items-start py-4 md:items-start justify-center h-auto max-h-full overflow-y-auto flex-col w-full md:w-full justify-center pl-4 md:pl-8">
+            <h2 className="font-rubik text-4xl w-[80%] text-left">
+              {project.content[projectIndex].slidetitle
+                ? project.content[projectIndex].slidetitle
+                : null}
+            </h2>
+            <div className="flex flex-col items-center justify-center w-[90%] ">
+              <div className="w-full flex  md:hidden items-center justify-center">
+                <ProjectNavigation
+                  project={project}
+                  nextProject={nextProject}
+                  goTothisIndex={goTothisIndex}
+                  goback={goback}
+                  projectIndex={circleIndex}
+                />
+              </div>
+              {project.content?.length && (
+                <div className="md:mt-8 w-full text-sm md:text-2xl paragraph font-work-sans text-stone-800/90">
+                  {project.content &&
+                    project.content.length > 0 &&
+                    project.content[projectIndex]?.content && (
+                      <>
+                        <PortableText
+                          value={project.content[projectIndex].content}
+                          components={portableTextComponents}
+                        />
+                        {project.content[projectIndex].url ? (
+                          <a
+                            href={project.content[projectIndex].url}
+                            className="font-space-mono underline italic font-rubik "
+                          >
+                            {project.content[projectIndex].urllabel}
+                          </a>
+                        ) : null}
+                      </>
+                    )}
+                </div>
+              )}
+            </div>
           </div>
-        </div>
+        )}
       </div>
       {/* Footer row: navigation (desktop) */}
       <div className="hidden md:w-full md:flex items-center justify-center md:h-[10%] ">
