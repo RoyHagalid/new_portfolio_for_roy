@@ -33,20 +33,7 @@ const ProjectInfo = ({ project, setToggleDisplay }: Props) => {
 
   const totalSlides = project.content.length;
 
-  const getCircleIndex = (currentIndex: number) => {
-    if (totalSlides <= 7) {
-      return currentIndex;
-    }
-
-    if (currentIndex < 6) {
-      return currentIndex;
-    } else if (currentIndex === totalSlides - 1) {
-      return 6;
-    } else {
-      return 5;
-    }
-  };
-
+  // Use projectIndex directly for slide indicator highlighting
   const goback = () => {
     if (projectIndex > 0) {
       setProjectIndex(projectIndex - 1);
@@ -64,7 +51,7 @@ const ProjectInfo = ({ project, setToggleDisplay }: Props) => {
     setProjectIndex(index);
   };
 
-  const circleIndex = getCircleIndex(projectIndex);
+  const circleIndex = projectIndex;
 
   return (
     <div className="fixed inset-0 z-[10000] flex items-center justify-center w-screen h-screen">

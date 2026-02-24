@@ -10,6 +10,7 @@ type Props = {
   goback: () => void;
   nextProject: () => void;
   goTothisIndex: (index: number) => void;
+  hideIndicators?: boolean;
 };
 
 const ProjectNavigation = ({
@@ -18,13 +19,13 @@ const ProjectNavigation = ({
   goback,
   nextProject,
   goTothisIndex,
+  hideIndicators = false,
 }: Props) => {
   return (
     <div className="text-white md:my-3 md:py-3 w-[100%] md:w-[43%] flex z-[10000] md:h-[10%]  items-center justify-evenly">
-      <ProjectButtonLeft action={goback} />
-      {project.content?.length && (
+      {!hideIndicators && project.content?.length && (
         <>
-          {Array.from({ length: Math.min(project.content.length, 7) }).map(
+          {Array.from({ length: Math.min(project.content.length, 10) }).map(
             (_, i) => (
               <ProjectCircle
                 action={goTothisIndex}
@@ -36,7 +37,6 @@ const ProjectNavigation = ({
           )}
         </>
       )}
-      <ProjectButtonRight action={nextProject} />
     </div>
   );
 };
