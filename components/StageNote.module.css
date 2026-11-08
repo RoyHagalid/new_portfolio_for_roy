@@ -1,0 +1,39 @@
+/* Hidden by default. Each stage turns on only its own notes. */
+.note {
+  display: none;
+  position: absolute;
+  z-index: 5;
+  pointer-events: none; /* clicks go through to the content underneath */
+  white-space: nowrap;
+}
+
+:global([data-stage="idea"]) .idea,
+:global([data-stage="prototype"]) .prototype {
+  display: block;
+}
+
+/* Hidden on small screens unless showOnMobile is set */
+@media (max-width: 40rem) {
+  .note:not(.mobile) {
+    display: none !important;
+  }
+}
+
+/* Placeholder text style, used until the SVG notes exist */
+.text {
+  display: inline-block;
+  padding: 0.1rem 0.4rem;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: var(--color-note);
+  border: 1.5px dashed var(--color-note);
+  background: var(--color-page);
+}
+
+/* Placements, relative to the parent element */
+.right { left: 100%; top: 0; margin-left: 0.75rem; }
+.left { right: 100%; top: 0; margin-right: 0.75rem; }
+.top-right { right: 0; top: 0; transform: translateY(-50%); }
+.above-right { right: 0; bottom: 100%; margin-bottom: 0.25rem; }
+.below-left { left: clamp(1rem, 4vw, 2.5rem); top: 100%; margin-top: 0.25rem; }
+.below-right { right: clamp(1rem, 4vw, 2.5rem); top: 100%; margin-top: 0.25rem; }

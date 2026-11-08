@@ -1,0 +1,72 @@
+.wrapper {
+  position: relative;
+  padding-bottom: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.card {
+  max-width: 44rem;
+  padding: 1rem 1.25rem 0.5rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.caption {
+  text-align: left;
+}
+
+.heading {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.table th,
+.table td {
+  padding: 0.6rem 0.5rem 0.6rem 0;
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px var(--border-style) var(--border-color);
+}
+
+.table thead th {
+  border-top: 0;
+  font-size: 0.75rem;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+}
+
+.table tbody th {
+  font-weight: 600;
+}
+
+/* Make the whole name cell a comfortable touch target */
+.table tbody a {
+  display: inline-block;
+  min-height: 24px;
+}
+
+.table td {
+  color: var(--color-text-muted);
+}
+
+.year {
+  text-align: right !important;
+  white-space: nowrap;
+  padding-right: 0 !important;
+}
+
+/* On very small screens: hide the column labels and let rows breathe */
+@media (max-width: 30rem) {
+  .table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+}

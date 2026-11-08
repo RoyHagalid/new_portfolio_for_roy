@@ -1,0 +1,35 @@
+.switch {
+  display: inline-flex;
+  border: var(--border-width) var(--border-style) var(--border-color);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  overflow: hidden;
+}
+
+.option {
+  min-height: 44px;
+  padding: 0.25rem 0.8rem;
+  border: 0;
+  background: transparent;
+  color: var(--color-text);
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.option + .option {
+  border-left: var(--border-width) var(--border-style) var(--border-color);
+}
+
+/* The highlighted stage follows <html data-stage>, so it's correct
+   even before JavaScript has loaded (no flash of the wrong button). */
+:global(html[data-stage="idea"]) .option[data-value="idea"],
+:global(html[data-stage="prototype"]) .option[data-value="prototype"],
+:global(html[data-stage="final"]) .option[data-value="final"] {
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+}
+
+.option:focus-visible {
+  outline-offset: -3px;
+}

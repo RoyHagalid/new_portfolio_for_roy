@@ -1,0 +1,26 @@
+.footer {
+  border-top: var(--border-width) var(--border-style) var(--border-color);
+  padding-block: 2rem;
+  font-size: 0.95rem;
+}
+
+.inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.name {
+  margin: 0;
+  font-family: var(--font-heading);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

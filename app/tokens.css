@@ -1,0 +1,81 @@
+/*
+  DESIGN TOKENS PER STAGE
+  -----------------------
+  This is the heart of the stage switch. Every colour, font, border and shadow
+  on the site comes from one of these variables. Each stage sets its own values.
+  Components never hard-code a colour; they always use var(--token-name).
+
+  Think of it like Figma variables with three modes: Idea, Prototype, Final.
+
+  NOTE: these are PLACEHOLDER values, just enough to tell the stages apart.
+  We'll tune them together once the visual design is settled.
+
+  Rule: tokens may change how things LOOK, never how much space they take.
+  So no token changes padding, gaps or sizes. That keeps the layout identical.
+*/
+
+:root,
+:root[data-stage="final"] {
+  --font-body: "Work Sans Variable", system-ui, sans-serif;
+  --font-heading: "Libre Baskerville", Georgia, serif;
+
+  --color-page: #efe6d2; /* manila */
+  --color-surface: #faf6ec;
+  --color-text: #2b2118;
+  --color-text-muted: #6b5a48;
+  --color-accent: #9c4524;
+  --color-accent-contrast: #ffffff;
+  --color-line: #d9c9a8;
+
+  --border-width: 1px;
+  --border-style: solid;
+  --border-color: var(--color-line);
+  --radius: 6px;
+  --shadow: 0 1px 2px rgb(43 33 24 / 0.08), 0 4px 12px rgb(43 33 24 / 0.06);
+}
+
+:root[data-stage="prototype"] {
+  --font-body: "Inter Variable", system-ui, sans-serif;
+  --font-heading: "Inter Variable", system-ui, sans-serif;
+
+  --color-page: #f3f4f6;
+  --color-surface: #ffffff;
+  --color-text: #1d1f24;
+  --color-text-muted: #5b606b;
+  --color-accent: #3159c4;
+  --color-accent-contrast: #ffffff;
+  --color-line: #e2e4e9;
+
+  --border-width: 1px;
+  --border-style: solid;
+  --border-color: var(--color-line);
+  --radius: 8px;
+  --shadow: none;
+
+  /* Colour of the margin notes in this stage */
+  --color-note: #3159c4;
+}
+
+:root[data-stage="idea"] {
+  --font-body: "Courier Prime", "Courier New", monospace;
+  --font-heading: "Courier Prime", "Courier New", monospace;
+
+  --color-page: #ffffff;
+  --color-surface: #ffffff;
+  --color-text: #111111;
+  --color-text-muted: #444444;
+  --color-accent: #111111;
+  --color-accent-contrast: #ffffff;
+  --color-line: #111111;
+
+  --border-width: 2px;
+  --border-style: solid;
+  --border-color: #111111;
+  --radius: 0;
+  --shadow: none;
+
+  /* The red and blue "pens" */
+  --color-pen-red: #d42020;
+  --color-pen-blue: #1f4fd8;
+  --color-note: var(--color-pen-red);
+}

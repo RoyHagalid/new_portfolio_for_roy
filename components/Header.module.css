@@ -1,0 +1,66 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--color-page);
+  border-bottom: var(--border-width) var(--border-style) var(--border-color);
+}
+
+.inner {
+  position: relative; /* so notes can be placed relative to the header */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.5rem;
+  min-height: 4rem;
+  padding-block: 0.5rem;
+}
+
+.name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-decoration: none;
+  margin-right: auto;
+}
+
+.nav {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.lang {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  font-size: 0.875rem;
+}
+
+/* Small screens: name and controls on the first row, menu on the second.
+   (A proper mobile menu comes in a later step.) */
+@media (max-width: 40rem) {
+  .nav {
+    order: 3;
+    width: 100%;
+    gap: 1rem;
+  }
+}

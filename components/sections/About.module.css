@@ -1,0 +1,38 @@
+.about {
+  border-top: var(--border-width) var(--border-style) var(--border-color);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 14rem) minmax(0, 40rem);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+}
+
+.photo {
+  aspect-ratio: 4 / 5;
+  width: 100%;
+}
+
+.heading {
+  position: relative;
+  display: inline-block;
+}
+
+.contact {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.25rem;
+}
+
+@media (max-width: 40rem) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .photo {
+    max-width: 12rem;
+  }
+}
